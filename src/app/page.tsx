@@ -391,7 +391,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <Image src="/logo.png" alt="Splash Brothers Carwash" width={90} height={60} className="opacity-70" />
           <p>© {new Date().getFullYear()} Splash Brothers Carwash. All rights reserved.</p>
-          <a href="mailto:info@splashbrotherscarwash.com" className="hover:text-white transition">info@splashbrotherscarwash.com</a>
+          <div className="flex items-center gap-5">
+            <Link href="/cancel" className="hover:text-white transition">Cancel membership</Link>
+            <a href="mailto:info@splashbrotherscarwash.com" className="hover:text-white transition">info@splashbrotherscarwash.com</a>
+          </div>
         </div>
       </footer>
     </main>
