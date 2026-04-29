@@ -242,10 +242,10 @@ export default function HomePage() {
             <div className="max-w-xl">
               <p className="text-white/80 tracking-[0.2em] text-xs font-bold uppercase mb-2">Current deals</p>
               <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-[1.05]">
-                Buy 3 Splash Brothers gift cards, get 1 free.
+                Buy 3 of any wash, get 1 free.
               </h2>
               <p className="mt-3 text-white/85">
-                Stack them up for the family or stuff stockings. Any package, any value. Available at the kiosk or by phone.
+                The free wash gets loaded onto a Splash Brothers gift card. Stack them up for the family or stuff stockings. Any package, any value. Available at the kiosk or by phone.
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:max-w-xs w-full">
