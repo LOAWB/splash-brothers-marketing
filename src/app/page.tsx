@@ -66,9 +66,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
           <Image src="/logo.png" alt="Splash Brothers Carwash" width={130} height={87} priority />
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-white/90">
-            <a href="#how" className="hover:text-white transition">How it works</a>
             <a href="#menu" className="hover:text-white transition">Wash menu</a>
+            <a href="#deals" className="hover:text-white transition">Deals</a>
             <a href="#locations" className="hover:text-white transition">Locations</a>
+            <Link href="/careers" className="hover:text-white transition">Careers</Link>
             <Link href="/signup" className="bg-white text-[var(--color-splash-navy)] px-5 py-2 rounded-full font-semibold hover:bg-[var(--color-splash-blue)] hover:text-white transition">
               Join Splash Pass
             </Link>
@@ -166,7 +167,14 @@ export default function HomePage() {
       </section>
 
       {/* How it works + What's included combined into a denser two-column */}
-      <section id="how" className="py-14 md:py-16 bg-[#f6f9fc]">
+      <section id="how" className="relative py-14 md:py-16 bg-[#f6f9fc] overflow-hidden">
+        {/* Red water drop accents */}
+        <div className="absolute -left-24 top-12 w-72 h-72 opacity-[0.05] pointer-events-none" aria-hidden>
+          <div className="w-full h-full rounded-full bg-[var(--color-splash-red)] blur-3xl" />
+        </div>
+        <div className="absolute right-0 bottom-12 w-64 h-64 opacity-[0.04] pointer-events-none" aria-hidden>
+          <div className="w-full h-full rounded-full bg-[var(--color-splash-blue)] blur-3xl" />
+        </div>
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid md:grid-cols-2 gap-10">
             <div>
@@ -200,8 +208,54 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Deals strip */}
+      <section id="deals" className="relative overflow-hidden py-12 md:py-14 bg-gradient-to-br from-[var(--color-splash-red)] via-[#c92a22] to-[#a82119] text-white">
+        {/* Red water-drop pattern overlay */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none" aria-hidden>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="drops" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="20" r="3" fill="white" />
+                <circle cx="50" cy="40" r="5" fill="white" />
+                <circle cx="30" cy="60" r="2" fill="white" />
+                <circle cx="70" cy="10" r="2.5" fill="white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#drops)" />
+          </svg>
+        </div>
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="max-w-xl">
+              <p className="text-white/80 tracking-[0.2em] text-xs font-bold uppercase mb-2">Current deals</p>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-[1.05]">
+                Buy 3 Splash Brothers gift cards, get 1 free.
+              </h2>
+              <p className="mt-3 text-white/85">
+                Stack them up for the family or stuff stockings. Any package, any value. Available at the kiosk or by phone.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:max-w-xs w-full">
+              <div className="bg-white/15 backdrop-blur border border-white/25 rounded-xl px-4 py-3">
+                <p className="text-xs uppercase tracking-wide text-white/70">Members save</p>
+                <p className="text-2xl font-black">$20 off full service</p>
+              </div>
+              <div className="bg-white/15 backdrop-blur border border-white/25 rounded-xl px-4 py-3">
+                <p className="text-xs uppercase tracking-wide text-white/70">Add ceramic for</p>
+                <p className="text-2xl font-black">$5 any wash</p>
+              </div>
+            </div>
+          </div>
+          <p className="mt-6 text-white/65 text-xs">More deals at the kiosk. Stop in or call your nearest location.</p>
+        </div>
+      </section>
+
       {/* Wash Menu - tightened */}
-      <section id="menu" className="py-14 md:py-16 bg-white">
+      <section id="menu" className="relative py-14 md:py-16 bg-white">
+        {/* Subtle red splash accent in corner */}
+        <div className="absolute top-0 right-0 w-72 h-72 opacity-[0.04] pointer-events-none" aria-hidden>
+          <div className="w-full h-full rounded-full bg-[var(--color-splash-red)] blur-3xl" />
+        </div>
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
             <div>
@@ -314,9 +368,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Final CTA - tighter */}
-      <section className="py-14 md:py-16 bg-white">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      {/* Final CTA - tighter, with red splash accent */}
+      <section className="relative py-14 md:py-16 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-splash-red)] opacity-[0.06] blur-3xl" />
+          <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-splash-blue)] opacity-[0.05] blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-[0.98]">
             Sign up today.<br />
             <span className="text-[var(--color-splash-blue)]">Wash tomorrow.</span>

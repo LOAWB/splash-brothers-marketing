@@ -37,6 +37,7 @@ export default function BookPage() {
   const [vehicleYear, setVehicleYear] = useState('');
   const [vehicleMakeModel, setVehicleMakeModel] = useState('');
   const [notes, setNotes] = useState('');
+  const [smsReminder, setSmsReminder] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -75,6 +76,7 @@ export default function BookPage() {
           preferredDate: date,
           preferredTimeWindow: timeWindow,
           notes: notes.trim(),
+          smsReminderOptIn: smsReminder,
         }),
       });
       if (!res.ok) {
@@ -185,6 +187,19 @@ export default function BookPage() {
             <Field label="Notes (optional)">
               <textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Pet hair, kids' spills, anything we should know about" className={inputCls + ' min-h-24 resize-y'} />
             </Field>
+
+            <label className="flex items-start gap-3 cursor-pointer rounded-xl border border-black/10 bg-[#f6f9fc] p-4">
+              <input
+                type="checkbox"
+                checked={smsReminder}
+                onChange={(e) => setSmsReminder(e.target.checked)}
+                className="mt-0.5 w-5 h-5 rounded border-black/20 text-[var(--color-splash-blue)] focus:ring-2 focus:ring-[var(--color-splash-blue)]"
+              />
+              <div>
+                <p className="font-bold text-sm">Text me 15 min before my window</p>
+                <p className="text-xs text-black/60 mt-0.5">We will send a quick text so you can confirm or reschedule. Reply STOP to opt out.</p>
+              </div>
+            </label>
 
             {error && <p className="text-[var(--color-splash-red)] font-semibold text-sm">{error}</p>}
 
