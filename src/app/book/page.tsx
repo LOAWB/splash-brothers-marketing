@@ -20,6 +20,54 @@ const LOCATION_OPTIONS = [
 
 const TIME_WINDOWS = ['Morning (8am-11am)', 'Midday (11am-2pm)', 'Afternoon (2pm-5pm)'];
 
+const VEHICLE_SIZES = [
+  {
+    id: 'sedan' as const,
+    label: 'Sedan',
+    examples: 'Civic, Corolla, Camry, Accord',
+    icon: (
+      <svg viewBox="0 0 120 50" className="w-full h-12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M10 38 L18 22 Q22 16 32 15 L72 15 Q82 16 92 22 L108 28 Q112 30 112 34 L112 38 Z" fill="currentColor" opacity="0.9" />
+        <circle cx="32" cy="40" r="8" fill="#0a1928" />
+        <circle cx="32" cy="40" r="4" fill="#1d8ee0" />
+        <circle cx="92" cy="40" r="8" fill="#0a1928" />
+        <circle cx="92" cy="40" r="4" fill="#1d8ee0" />
+        <path d="M28 22 L70 22 Q76 16 82 22" stroke="white" strokeWidth="1" fill="none" opacity="0.4" />
+      </svg>
+    ),
+  },
+  {
+    id: 'mid-size' as const,
+    label: 'Mid Size',
+    examples: 'CR-V, RAV4, Rogue, Equinox',
+    icon: (
+      <svg viewBox="0 0 120 50" className="w-full h-12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M8 40 L14 22 Q18 12 28 11 L78 11 Q88 12 96 20 L110 26 Q114 28 114 32 L114 40 Z" fill="currentColor" opacity="0.9" />
+        <circle cx="30" cy="42" r="9" fill="#0a1928" />
+        <circle cx="30" cy="42" r="4.5" fill="#1d8ee0" />
+        <circle cx="92" cy="42" r="9" fill="#0a1928" />
+        <circle cx="92" cy="42" r="4.5" fill="#1d8ee0" />
+        <path d="M24 22 L74 22 Q82 12 88 20" stroke="white" strokeWidth="1" fill="none" opacity="0.4" />
+      </svg>
+    ),
+  },
+  {
+    id: 'full-size' as const,
+    label: 'Full Size',
+    examples: 'Suburban, Tahoe, Expedition, Sequoia',
+    icon: (
+      <svg viewBox="0 0 120 50" className="w-full h-12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M6 42 L10 18 Q14 8 24 7 L86 7 Q96 8 102 14 L114 22 Q118 24 118 28 L118 42 Z" fill="currentColor" opacity="0.9" />
+        <circle cx="28" cy="44" r="10" fill="#0a1928" />
+        <circle cx="28" cy="44" r="5" fill="#1d8ee0" />
+        <circle cx="94" cy="44" r="10" fill="#0a1928" />
+        <circle cx="94" cy="44" r="5" fill="#1d8ee0" />
+        <path d="M22 18 L82 18 Q92 8 96 14" stroke="white" strokeWidth="1" fill="none" opacity="0.4" />
+      </svg>
+    ),
+  },
+];
+
 function todayISO() {
   const d = new Date();
   d.setDate(d.getDate() + 1);
@@ -34,8 +82,7 @@ export default function BookPage() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [vehicleYear, setVehicleYear] = useState('');
-  const [vehicleMakeModel, setVehicleMakeModel] = useState('');
+  const [vehicleSize, setVehicleSize] = useState<'sedan' | 'mid-size' | 'full-size'>('sedan');
   const [notes, setNotes] = useState('');
   const [smsReminder, setSmsReminder] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -52,8 +99,6 @@ export default function BookPage() {
     if (!name.trim()) return setError('Enter your name.');
     if (!phone.replace(/\D/g, '')) return setError('Enter your phone number.');
     if (!email.includes('@')) return setError('Enter a valid email.');
-    if (!vehicleYear || !/^\d{4}$/.test(vehicleYear)) return setError('Enter a 4-digit vehicle year.');
-    if (!vehicleMakeModel.trim()) return setError('Enter your vehicle make and model.');
     if (!date) return setError('Pick a preferred date.');
 
     setSubmitting(true);
@@ -66,8 +111,8 @@ export default function BookPage() {
           name: name.trim(),
           phone: phone.replace(/\D/g, ''),
           email: email.trim().toLowerCase(),
-          vehicleYear,
-          vehicleMakeModel: vehicleMakeModel.trim(),
+          vehicleSize,
+          vehicleSizeLabel: VEHICLE_SIZES.find((s) => s.id === vehicleSize)!.label,
           packageId: pkg,
           packageName: selectedPkg.name,
           packagePrice: selectedPkg.price,
@@ -175,13 +220,22 @@ export default function BookPage() {
               </Field>
             </div>
 
-            <div className="grid md:grid-cols-[110px_1fr] gap-4">
-              <Field label="Vehicle Year" required>
-                <input value={vehicleYear} onChange={(e) => setVehicleYear(e.target.value.replace(/\D/g, '').slice(0, 4))} placeholder="2022" className={inputCls + ' font-mono'} inputMode="numeric" />
-              </Field>
-              <Field label="Make & Model" required>
-                <input value={vehicleMakeModel} onChange={(e) => setVehicleMakeModel(e.target.value)} placeholder="Honda Civic" className={inputCls} />
-              </Field>
+            <div>
+              <p className="text-xs font-bold tracking-wide text-[var(--color-splash-navy)] uppercase mb-2">Vehicle size <span className="font-medium text-black/45 normal-case ml-2">size affects final pricing</span></p>
+              <div className="grid grid-cols-3 gap-3">
+                {VEHICLE_SIZES.map((s) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setVehicleSize(s.id)}
+                    className={`text-left rounded-xl border p-4 transition ${vehicleSize === s.id ? 'border-[var(--color-splash-blue)] bg-[var(--color-splash-blue)]/5 text-[var(--color-splash-navy)]' : 'border-black/10 bg-white text-[var(--color-splash-blue-deep)]/70 hover:border-black/30 hover:text-[var(--color-splash-navy)]'}`}
+                  >
+                    {s.icon}
+                    <p className="mt-2 font-bold text-base text-[var(--color-splash-ink)]">{s.label}</p>
+                    <p className="text-xs text-black/55 mt-0.5">{s.examples}</p>
+                  </button>
+                ))}
+              </div>
             </div>
 
             <Field label="Notes (optional)">
