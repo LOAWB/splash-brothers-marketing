@@ -78,11 +78,12 @@ export default function HomePage() {
       <header className="absolute top-0 left-0 right-0 z-30">
         <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
           <Image src="/logo.png" alt="Splash Brothers Carwash" width={130} height={87} priority />
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-white/90">
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-white/90">
             <a href="#menu" className="hover:text-white transition">Wash menu</a>
             <a href="#deals" className="hover:text-white transition">Deals</a>
             <a href="#locations" className="hover:text-white transition">Locations</a>
             <Link href="/careers" className="hover:text-white transition">Careers</Link>
+            <Link href="/cancel" className="hover:text-white transition">Cancel</Link>
             <Link href="/signup" className="bg-white text-[var(--color-splash-navy)] px-5 py-2 rounded-full font-semibold hover:bg-[var(--color-splash-blue)] hover:text-white transition">
               Join Splash Pass
             </Link>
