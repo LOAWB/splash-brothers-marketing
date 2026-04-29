@@ -91,36 +91,9 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero - tightened */}
-      <section className="relative overflow-hidden bg-[var(--color-splash-navy)] text-white">
+      {/* Hero - clean solid */}
+      <section className="relative bg-[var(--color-splash-navy)] text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1f3a] via-[var(--color-splash-navy)] to-[#0a1928]" />
-        {/* Water-themed bubble layer */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          {[
-            { left: '6%', size: 18, delay: 0, dur: 14 },
-            { left: '14%', size: 10, delay: 3, dur: 11 },
-            { left: '23%', size: 28, delay: 6, dur: 18 },
-            { left: '34%', size: 14, delay: 1.5, dur: 13 },
-            { left: '45%', size: 22, delay: 4, dur: 16 },
-            { left: '56%', size: 9, delay: 7.5, dur: 10 },
-            { left: '64%', size: 32, delay: 2.5, dur: 20 },
-            { left: '73%', size: 16, delay: 5, dur: 14 },
-            { left: '82%', size: 12, delay: 0.8, dur: 12 },
-            { left: '91%', size: 24, delay: 6.5, dur: 17 },
-          ].map((b, i) => (
-            <span
-              key={i}
-              className="bubble"
-              style={{
-                left: b.left,
-                width: b.size,
-                height: b.size,
-                animationDelay: `${b.delay}s`,
-                animationDuration: `${b.dur}s`,
-              }}
-            />
-          ))}
-        </div>
         <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-14 md:pt-32 md:pb-16">
           <div className="grid md:grid-cols-[1.5fr_1fr] gap-10 items-end">
             <div>
@@ -180,14 +153,7 @@ export default function HomePage() {
       </section>
 
       {/* How it works + What's included combined into a denser two-column */}
-      <section id="how" className="relative py-14 md:py-16 bg-[#f6f9fc] overflow-hidden">
-        {/* Red water drop accents */}
-        <div className="absolute -left-24 top-12 w-72 h-72 opacity-[0.05] pointer-events-none" aria-hidden>
-          <div className="w-full h-full rounded-full bg-[var(--color-splash-red)] blur-3xl" />
-        </div>
-        <div className="absolute right-0 bottom-12 w-64 h-64 opacity-[0.04] pointer-events-none" aria-hidden>
-          <div className="w-full h-full rounded-full bg-[var(--color-splash-blue)] blur-3xl" />
-        </div>
+      <section id="how" className="py-14 md:py-16 bg-[#f6f9fc]">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid md:grid-cols-2 gap-10">
             <div>
@@ -221,23 +187,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Deals strip */}
-      <section id="deals" className="relative overflow-hidden py-12 md:py-14 bg-gradient-to-br from-[var(--color-splash-red)] via-[#c92a22] to-[#a82119] text-white">
-        {/* Red water-drop pattern overlay */}
-        <div className="absolute inset-0 opacity-15 pointer-events-none" aria-hidden>
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="drops" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <circle cx="10" cy="20" r="3" fill="white" />
-                <circle cx="50" cy="40" r="5" fill="white" />
-                <circle cx="30" cy="60" r="2" fill="white" />
-                <circle cx="70" cy="10" r="2.5" fill="white" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#drops)" />
-          </svg>
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6">
+      {/* Deals strip - solid red, no faded overlays */}
+      <section id="deals" className="py-12 md:py-14 bg-[var(--color-splash-red)] text-white">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="max-w-xl">
               <p className="text-white/80 tracking-[0.2em] text-xs font-bold uppercase mb-2">Current deals</p>
@@ -264,11 +216,7 @@ export default function HomePage() {
       </section>
 
       {/* Wash Menu - tightened */}
-      <section id="menu" className="relative py-14 md:py-16 bg-white">
-        {/* Subtle red splash accent in corner */}
-        <div className="absolute top-0 right-0 w-72 h-72 opacity-[0.04] pointer-events-none" aria-hidden>
-          <div className="w-full h-full rounded-full bg-[var(--color-splash-red)] blur-3xl" />
-        </div>
+      <section id="menu" className="py-14 md:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
             <div>
@@ -420,7 +368,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Locations - tighter */}
+      {/* Locations - tighter, clean solid */}
       <section id="locations" className="py-14 md:py-16 bg-[var(--color-splash-navy)] text-white">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
@@ -461,13 +409,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Final CTA - tighter, with red splash accent */}
-      <section className="relative py-14 md:py-16 bg-white overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-splash-red)] opacity-[0.06] blur-3xl" />
-          <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-[var(--color-splash-blue)] opacity-[0.05] blur-3xl" />
-        </div>
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
+      {/* Final CTA - clean white */}
+      <section className="py-14 md:py-16 bg-white">
+        <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-[0.98]">
             Sign up today.<br />
             <span className="text-[var(--color-splash-blue)]">Wash tomorrow.</span>
