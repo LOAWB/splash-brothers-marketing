@@ -251,19 +251,25 @@ export default function HomePage() {
           </div>
 
           {/* Detail packages */}
-          <p className="mt-9 text-xs font-bold tracking-wide text-[var(--color-splash-navy)] uppercase mb-4">Detail Packages</p>
+          <div className="mt-9 flex items-end justify-between gap-3 mb-4">
+            <p className="text-xs font-bold tracking-wide text-[var(--color-splash-navy)] uppercase">Detail Packages</p>
+            <Link href="/book" className="text-sm font-semibold text-[var(--color-splash-blue-deep)] hover:text-[var(--color-splash-navy)] transition">
+              Book any detail online <span aria-hidden>→</span>
+            </Link>
+          </div>
           <div className="bg-white rounded-2xl border border-black/10 divide-y divide-black/5">
             {DETAIL_PACKAGES.map((pkg) => (
-              <div key={pkg.name} className="grid md:grid-cols-[1fr_auto] gap-3 items-center p-5 hover:bg-[#f6f9fc] transition">
+              <Link key={pkg.name} href={`/book?package=${pkg.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="grid md:grid-cols-[1fr_auto_auto] gap-3 items-center p-5 hover:bg-[#f6f9fc] transition group">
                 <div>
                   <h3 className="text-base md:text-lg font-bold tracking-tight">{pkg.name}</h3>
                   <p className="text-sm text-black/60">{pkg.note}</p>
                 </div>
                 <div className="text-2xl md:text-3xl font-black tabular-nums">${pkg.price.toFixed(2)}</div>
-              </div>
+                <div className="text-sm font-bold text-[var(--color-splash-blue)] group-hover:text-[var(--color-splash-blue-deep)]">Book →</div>
+              </Link>
             ))}
           </div>
-          <p className="mt-3 text-xs text-black/50">Detail packages by appointment. Call your nearest location to book.</p>
+          <p className="mt-3 text-xs text-black/50">Pick a date and time window online. We confirm the exact appointment by phone same business day.</p>
         </div>
       </section>
 
