@@ -351,22 +351,43 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Ceramic strip */}
-          <div className="mt-6 relative bg-[var(--color-splash-ink)] text-white rounded-2xl p-6 grid md:grid-cols-[1fr_auto] gap-6 items-center">
-            <div className="absolute top-4 right-4 md:static md:top-auto md:right-auto bg-[var(--color-splash-red)] text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full md:hidden">New</div>
-            <div>
-              <div className="flex items-center gap-3 mb-1">
-                <p className="text-[var(--color-splash-blue)] tracking-[0.2em] text-xs font-bold uppercase">Ceramic add-on</p>
-                <span className="hidden md:inline-block bg-[var(--color-splash-red)] text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full">New</span>
+          {/* Ceramic Seal feature card */}
+          <div className="mt-6 relative bg-gradient-to-br from-[var(--color-splash-ink)] via-[var(--color-splash-navy)] to-[#0a1f3a] text-white rounded-2xl overflow-hidden">
+            <div className="absolute top-4 right-4 bg-[var(--color-splash-red)] text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full z-10">New</div>
+            <div className="p-6 md:p-8">
+              <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                <p className="text-[var(--color-splash-blue)] tracking-[0.25em] text-xs font-bold uppercase">Ceramic Seal Add-On</p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white/55">Armor All Professional</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-black tracking-tight">
-                Amplify Kwik Coat. <span className="text-[var(--color-splash-blue)]">30% SiO2.</span>
+              <h3 className="text-2xl md:text-4xl font-black tracking-tight leading-[1.05]">
+                Longer-lasting shine and <span className="text-[var(--color-splash-blue)]">protection</span>.
               </h3>
-              <p className="mt-1 text-white/75">Highest SiO2 spray sealant on the market. 6+ months of ceramic protection, hydrophobic, super high gloss. Add to any wash.</p>
-            </div>
-            <div className="text-left md:text-right">
-              <div className="text-4xl font-black leading-none">$5</div>
-              <div className="text-white/60 text-xs uppercase tracking-wide mt-1">with any wash</div>
+              <p className="mt-3 text-white/75 max-w-2xl">
+                Highest SiO2 spray sealant on the market. 6+ months of ceramic protection. Hydrophobic. Hand-applied at the kiosk for $5 on any wash.
+              </p>
+
+              <div className="mt-7 grid sm:grid-cols-3 gap-4">
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <p className="text-[var(--color-splash-blue)] text-[10px] font-bold uppercase tracking-widest">Shine</p>
+                  <p className="mt-1 font-bold leading-snug">Magnifies the shine for a like-new appearance</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <p className="text-[var(--color-splash-blue)] text-[10px] font-bold uppercase tracking-widest">Armor</p>
+                  <p className="mt-1 font-bold leading-snug">Acts as durable armor to protect the vehicle</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                  <p className="text-[var(--color-splash-blue)] text-[10px] font-bold uppercase tracking-widest">Bond</p>
+                  <p className="mt-1 font-bold leading-snug">Forms a strong bond to the vehicle surface</p>
+                </div>
+              </div>
+
+              <div className="mt-7 flex flex-wrap items-baseline justify-between gap-3 pt-5 border-t border-white/10">
+                <div>
+                  <span className="text-4xl font-black">$5</span>
+                  <span className="ml-2 text-white/60 text-sm uppercase tracking-wide">with any wash</span>
+                </div>
+                <p className="text-white/55 text-xs uppercase tracking-widest">Try it today</p>
+              </div>
             </div>
           </div>
 
