@@ -108,17 +108,17 @@ export default function HomePage() {
       <header className="absolute top-0 left-0 right-0 z-30">
         <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
           <Image src="/logo.png" alt="Splash Brothers Carwash" width={130} height={87} priority />
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-white/90">
-            <a href="#menu" className="hover:text-white transition">Wash menu</a>
+          <nav className="hidden md:flex items-center gap-6 text-[11px] tracker text-white/85">
+            <a href="#menu" className="hover:text-white transition">Menu</a>
             <a href="#deals" className="hover:text-white transition">Deals</a>
             <a href="#locations" className="hover:text-white transition">Locations</a>
             <Link href="/careers" className="hover:text-white transition">Careers</Link>
             <Link href="/cancel" className="hover:text-white transition">Cancel</Link>
-            <Link href="/signup" className="bg-white text-[var(--color-splash-navy)] px-5 py-2 rounded-full font-semibold hover:bg-[var(--color-splash-blue)] hover:text-white transition">
+            <Link href="/signup" className="bg-[var(--color-splash-cream)] text-[var(--color-splash-navy)] px-5 py-2 rounded-full font-bold normal-case tracking-normal hover:bg-[var(--color-splash-red)] hover:text-white transition">
               Join Splash Pass
             </Link>
           </nav>
-          <Link href="/signup" className="md:hidden bg-white text-[var(--color-splash-navy)] px-4 py-2 rounded-full text-sm font-semibold">Join</Link>
+          <Link href="/signup" className="md:hidden bg-[var(--color-splash-cream)] text-[var(--color-splash-navy)] px-4 py-2 rounded-full text-sm font-bold">Join</Link>
         </div>
       </header>
 
@@ -129,9 +129,10 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-14 md:pt-32 md:pb-16">
           <div className="grid md:grid-cols-[1.5fr_1fr] gap-10 items-end">
             <div>
-              <h1 className="text-5xl md:text-7xl font-black leading-[0.95] tracking-tight">
-                Unlimited washes.<br />
-                <span className="text-[var(--color-splash-blue)]">Unreal</span> light show.
+              <h1 className="font-display text-7xl md:text-[10rem] uppercase leading-[0.85]">
+                Unlimited<br />
+                <span className="font-accent normal-case lowercase text-[0.85em] text-[var(--color-splash-blue)] tracking-tight">unreal</span><span className="ml-2">washes.</span><br />
+                Light show.
               </h1>
               <p className="mt-5 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
                 One monthly membership. Drive in any time, any location. No contract. Cancel anytime by email.
@@ -190,7 +191,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-10">
             <div>
               <p className="text-[var(--color-splash-blue-deep)] tracking-[0.2em] text-xs font-bold uppercase mb-2">How it works</p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.05]">Three steps. No app. No fobs.</h2>
+              <h2 className="text-3xl md:text-5xl font-display uppercase leading-[0.92]">Three steps. No app. No fobs.</h2>
               <ul className="mt-7 space-y-5">
                 {STEPS.map((step) => (
                   <li key={step.n} className="grid grid-cols-[auto_1fr] gap-4 items-start">
@@ -205,7 +206,7 @@ export default function HomePage() {
             </div>
             <div>
               <p className="text-[var(--color-splash-blue-deep)] tracking-[0.2em] text-xs font-bold uppercase mb-2">What's included</p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.05]">The membership most car washes wish they could ship.</h2>
+              <h2 className="text-3xl md:text-5xl font-display uppercase leading-[0.92]">The membership most car washes wish they could ship.</h2>
               <ul className="mt-7 grid sm:grid-cols-2 gap-3">
                 {INCLUDED.map((item) => (
                   <li key={item.title} className="bg-white rounded-xl border border-black/5 p-4">
@@ -225,7 +226,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="max-w-xl">
               <p className="text-white/80 tracking-[0.2em] text-xs font-bold uppercase mb-2">Current deals</p>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-[1.05]">
+              <h2 className="text-3xl md:text-4xl font-display uppercase leading-[0.92]">
                 Buy 3 of any wash, get 1 free.
               </h2>
               <p className="mt-3 text-white/85">
@@ -253,7 +254,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
             <div>
               <p className="text-[var(--color-splash-blue-deep)] tracking-[0.2em] text-xs font-bold uppercase mb-2">Wash menu</p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.05]">From a quick express to a full detail.</h2>
+              <h2 className="text-3xl md:text-5xl font-display uppercase leading-[0.92]">From a quick express to a full detail.</h2>
             </div>
             <p className="text-black/65 max-w-md">Members save $20 on every full service tier below.</p>
           </div>
@@ -267,8 +268,8 @@ export default function HomePage() {
                 {tier.badge && <div className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider text-[var(--color-splash-red)] bg-[var(--color-splash-red)]/10 border border-[var(--color-splash-red)]/25 px-2 py-0.5 rounded-full">{tier.badge}</div>}
                 <h3 className="text-xl font-black tracking-tight">{tier.name}</h3>
                 <div className="mt-1 flex items-baseline gap-1">
-                  <span className="text-4xl font-black">${tier.price.toFixed(2).split('.')[0]}</span>
-                  <span className="text-xl font-bold text-black/50">.{tier.price.toFixed(2).split('.')[1]}</span>
+                  <span className="font-display text-5xl">${tier.price.toFixed(2).split('.')[0]}</span>
+                  <span className="font-display text-2xl text-black/50">.{tier.price.toFixed(2).split('.')[1]}</span>
                 </div>
                 <p className="mt-0.5 text-xs text-black/55">Per visit</p>
                 <ul className="mt-4 space-y-1.5 text-sm">
@@ -314,8 +315,8 @@ export default function HomePage() {
                 {tier.popular && <div className="absolute -top-2.5 left-6 bg-[var(--color-splash-blue)] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Most popular</div>}
                 <h3 className="text-xl font-black tracking-tight">{tier.name}</h3>
                 <div className="mt-1 flex items-baseline gap-1">
-                  <span className="text-4xl font-black">${tier.price.toFixed(2).split('.')[0]}</span>
-                  <span className="text-xl font-bold text-black/50">.{tier.price.toFixed(2).split('.')[1]}</span>
+                  <span className="font-display text-5xl">${tier.price.toFixed(2).split('.')[0]}</span>
+                  <span className="font-display text-2xl text-black/50">.{tier.price.toFixed(2).split('.')[1]}</span>
                 </div>
                 <div className="mt-0.5 text-[11px] text-black/55 leading-tight">
                   <p>${tier.fullPrice.toFixed(2)} full-size vehicles</p>
@@ -340,7 +341,7 @@ export default function HomePage() {
                 <p className="text-[var(--color-splash-blue)] tracking-[0.25em] text-xs font-bold uppercase">Ceramic Seal Add-On</p>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-white/55">Armor All Professional</span>
               </div>
-              <h3 className="text-2xl md:text-4xl font-black tracking-tight leading-[1.05]">
+              <h3 className="text-2xl md:text-4xl font-display uppercase leading-[0.92]">
                 Longer-lasting shine and <span className="text-[var(--color-splash-blue)]">protection</span>.
               </h3>
               <p className="mt-3 text-white/75 max-w-2xl">
@@ -408,7 +409,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
             <div>
               <p className="text-[var(--color-splash-blue)] tracking-[0.2em] text-xs font-bold uppercase mb-2">Locations</p>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.05]">Three tunnels. Two states. One membership.</h2>
+              <h2 className="text-3xl md:text-5xl font-display uppercase leading-[0.92]">Three tunnels. Two states. One membership.</h2>
             </div>
             <p className="text-white/60 max-w-md">Splash Pass works at every location. Same monthly rate.</p>
           </div>
@@ -446,7 +447,7 @@ export default function HomePage() {
       {/* Final CTA - clean white */}
       <section className="py-14 md:py-16 bg-white">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-[0.98]">
+          <h2 className="font-display text-5xl md:text-8xl uppercase leading-[0.88]">
             Sign up today.<br />
             <span className="text-[var(--color-splash-blue)]">Wash tomorrow.</span>
           </h2>
