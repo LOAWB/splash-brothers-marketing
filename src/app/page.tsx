@@ -71,6 +71,36 @@ const DETAIL_PACKAGES = [
   { name: '5-Step Exterior', price: 499.99, midPrice: 519.99, fullPrice: 549.99, note: 'Full service + clay bar + diamond cut compound + wax + polish + paint seal' },
 ];
 
+function BubbleField({ count = 12, seed = 0 }: { count?: number; seed?: number }) {
+  // deterministic spread + sizes per seed so each instance looks distinct
+  const bubbles = Array.from({ length: count }).map((_, i) => {
+    const idx = i + seed;
+    return {
+      left: `${(idx * 6.7 + (seed * 3)) % 96 + 1}%`,
+      size: 12 + ((idx * 7) % 28),
+      delay: (idx * 1.3) % 9,
+      dur: 10 + ((idx * 3) % 10),
+    };
+  });
+  return (
+    <div className="absolute inset-0 pointer-events-none" aria-hidden>
+      {bubbles.map((b, i) => (
+        <span
+          key={i}
+          className="bubble"
+          style={{
+            left: b.left,
+            width: b.size,
+            height: b.size,
+            animationDelay: `${b.delay}s`,
+            animationDuration: `${b.dur}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <main>
@@ -92,42 +122,10 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero - clean solid with bubble layer */}
+      {/* Hero - dark navy with bubble field */}
       <section className="relative overflow-hidden bg-[var(--color-splash-navy)] text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1f3a] via-[var(--color-splash-navy)] to-[#0a1928]" />
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          {[
-            { left: '3%', size: 26, delay: 0, dur: 13 },
-            { left: '8%', size: 14, delay: 5, dur: 10 },
-            { left: '14%', size: 38, delay: 2, dur: 17 },
-            { left: '20%', size: 18, delay: 7.5, dur: 12 },
-            { left: '26%', size: 12, delay: 1, dur: 9 },
-            { left: '32%', size: 30, delay: 4.5, dur: 16 },
-            { left: '38%', size: 16, delay: 8, dur: 11 },
-            { left: '44%', size: 22, delay: 2.5, dur: 14 },
-            { left: '50%', size: 36, delay: 6, dur: 18 },
-            { left: '56%', size: 14, delay: 0.5, dur: 10 },
-            { left: '62%', size: 28, delay: 3.5, dur: 15 },
-            { left: '68%', size: 18, delay: 7, dur: 12 },
-            { left: '74%', size: 24, delay: 1.5, dur: 13 },
-            { left: '80%', size: 32, delay: 5.5, dur: 17 },
-            { left: '86%', size: 14, delay: 8.5, dur: 11 },
-            { left: '92%', size: 22, delay: 3, dur: 14 },
-            { left: '97%', size: 18, delay: 6.5, dur: 12 },
-          ].map((b, i) => (
-            <span
-              key={i}
-              className="bubble"
-              style={{
-                left: b.left,
-                width: b.size,
-                height: b.size,
-                animationDelay: `${b.delay}s`,
-                animationDuration: `${b.dur}s`,
-              }}
-            />
-          ))}
-        </div>
+        <BubbleField count={18} seed={1} />
         <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-14 md:pt-32 md:pb-16">
           <div className="grid md:grid-cols-[1.5fr_1fr] gap-10 items-end">
             <div>
@@ -335,6 +333,7 @@ export default function HomePage() {
 
           {/* Ceramic Seal feature card */}
           <div className="mt-6 relative bg-gradient-to-br from-[var(--color-splash-ink)] via-[var(--color-splash-navy)] to-[#0a1f3a] text-white rounded-2xl overflow-hidden">
+            <BubbleField count={10} seed={7} />
             <div className="absolute top-4 right-4 bg-[var(--color-splash-red)] text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full z-10">New</div>
             <div className="p-6 md:p-8">
               <div className="flex flex-wrap items-baseline gap-3 mb-2">
@@ -402,8 +401,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Locations - tighter, clean solid */}
-      <section id="locations" className="py-14 md:py-16 bg-[var(--color-splash-navy)] text-white">
+      {/* Locations - tighter, clean solid with bubbles */}
+      <section id="locations" className="relative overflow-hidden py-14 md:py-16 bg-[var(--color-splash-navy)] text-white">
+        <BubbleField count={14} seed={11} />
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-9">
             <div>
