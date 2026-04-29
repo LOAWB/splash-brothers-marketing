@@ -224,9 +224,9 @@ export default function SignupPage() {
             <ul className="mt-8 space-y-4 text-white/85">
               {[
                 'Unlimited tunnel washes at every location',
-                'Free vacuums after every wash',
+                'Daily washes if you want',
                 '$20 off any full service package',
-                'License-plate entry, no fobs',
+                'Same plate, same monthly rate',
                 'Cancel anytime by email',
                 'No contract',
               ].map((line) => (
