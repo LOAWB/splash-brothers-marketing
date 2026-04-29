@@ -44,6 +44,19 @@ const INCLUDED = [
   { title: 'No contract', body: 'Charged the same date every month. Cancel by email 15 days before renewal.' },
 ];
 
+const EXPRESS = [
+  { name: 'Deluxe', price: 17.99, features: ['Exterior car wash', 'Wheel cleaner', 'Bug prep', 'Polish', 'Tire shine', 'Towel dry'] },
+  { name: 'Ultimate', price: 19.99, popular: true, badge: 'With Rain-X', features: ['Everything in Deluxe', 'Rain-X polish'] },
+  { name: 'Ceramic Seal + Protect', price: 24.99, badge: 'Armor All', features: ['Everything in Ultimate', 'Ceramic seal coating'] },
+];
+
+const SUNDAY_EXPRESS = [
+  { name: 'Basic', price: 13.99, features: ['Exterior car wash', 'Free self vacuum'] },
+  { name: 'Deluxe', price: 16.99, features: ['Exterior car wash', 'Wheel cleaner', 'Polish', 'High pressure rinse', 'Free self vacuum'] },
+  { name: 'Ultimate', price: 19.99, popular: true, badge: 'With Rain-X', features: ['Everything in Deluxe', 'Rain-X polish'] },
+  { name: 'Ceramic Seal + Protect', price: 24.99, badge: 'Armor All', features: ['Everything in Ultimate', 'Ceramic seal coating'] },
+];
+
 const FULL_SERVICE = [
   { name: 'Gold', price: 46.99, features: ['Full service car wash', 'Wheel cleaner', 'Polish', 'Windows', 'Interior vacuum', 'Interior + door jamb wipe down', 'Tire shine'] },
   { name: 'Platinum', price: 56.99, popular: true, features: ['Everything in Gold', 'Rain-X polish', 'Dashboard dressing', 'Air freshener'] },
@@ -263,6 +276,55 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.05]">From a quick express to a full detail.</h2>
             </div>
             <p className="text-black/65 max-w-md">Members save $20 on every full service tier below.</p>
+          </div>
+
+          {/* Express exterior tier */}
+          <p className="text-xs font-bold tracking-wide text-[var(--color-splash-navy)] uppercase mb-4">Express Exterior <span className="font-medium text-black/45 normal-case ml-2">drive thru, no interior, weekday menu</span></p>
+          <div className="grid md:grid-cols-3 gap-4 mb-10">
+            {EXPRESS.map((tier) => (
+              <div key={tier.name} className={`relative rounded-2xl p-6 border ${tier.popular ? 'border-[var(--color-splash-blue)] bg-[var(--color-splash-blue)]/5' : 'border-black/10 bg-white'}`}>
+                {tier.popular && <div className="absolute -top-2.5 left-6 bg-[var(--color-splash-blue)] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Most popular</div>}
+                {tier.badge && <div className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider text-[var(--color-splash-red)] bg-[var(--color-splash-red)]/10 border border-[var(--color-splash-red)]/25 px-2 py-0.5 rounded-full">{tier.badge}</div>}
+                <h3 className="text-xl font-black tracking-tight">{tier.name}</h3>
+                <div className="mt-1 flex items-baseline gap-1">
+                  <span className="text-4xl font-black">${tier.price.toFixed(2).split('.')[0]}</span>
+                  <span className="text-xl font-bold text-black/50">.{tier.price.toFixed(2).split('.')[1]}</span>
+                </div>
+                <p className="mt-0.5 text-xs text-black/55">Per visit</p>
+                <ul className="mt-4 space-y-1.5 text-sm">
+                  {tier.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-black/75"><span className="text-[var(--color-splash-blue)] flex-shrink-0">✓</span><span>{f}</span></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          {/* Sunday self-service section */}
+          <div className="mb-10 rounded-2xl border border-[var(--color-splash-blue)]/20 bg-gradient-to-br from-[var(--color-splash-blue)]/5 to-white p-6 md:p-7">
+            <div className="flex flex-wrap items-center gap-3 mb-1">
+              <p className="text-xs font-bold tracking-wide text-[var(--color-splash-navy)] uppercase">Sunday Express, Self Service</p>
+              <span className="bg-[var(--color-splash-red)] text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full">San Leandro only</span>
+            </div>
+            <p className="text-black/65 mb-5">Sundays we open the vacuum bays and drop the price floor. You wash, you vacuum, you go. Free self-vacuum included on every Sunday Express tier.</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {SUNDAY_EXPRESS.map((tier) => (
+                <div key={tier.name} className={`relative rounded-xl p-4 border ${tier.popular ? 'border-[var(--color-splash-blue)] bg-white' : 'border-black/10 bg-white'}`}>
+                  {tier.popular && <div className="absolute -top-2 left-4 bg-[var(--color-splash-blue)] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Popular</div>}
+                  {tier.badge && <div className="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-wider text-[var(--color-splash-red)]">{tier.badge}</div>}
+                  <h4 className="font-black text-base">{tier.name}</h4>
+                  <div className="mt-0.5 flex items-baseline gap-0.5">
+                    <span className="text-2xl font-black">${tier.price.toFixed(2).split('.')[0]}</span>
+                    <span className="text-base font-bold text-black/50">.{tier.price.toFixed(2).split('.')[1]}</span>
+                  </div>
+                  <ul className="mt-3 space-y-1 text-xs text-black/70">
+                    {tier.features.map((f) => (
+                      <li key={f}>• {f}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-black/50">San Leandro only. <Link href="/signup" className="text-[var(--color-splash-blue-deep)] font-semibold hover:underline">Skip the math and go unlimited for $39.99/mo</Link>.</p>
           </div>
 
           <p className="text-xs font-bold tracking-wide text-[var(--color-splash-navy)] uppercase mb-4">Full Service Packages</p>
