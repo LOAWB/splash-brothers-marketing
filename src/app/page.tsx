@@ -92,9 +92,42 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero - clean solid */}
-      <section className="relative bg-[var(--color-splash-navy)] text-white">
+      {/* Hero - clean solid with bubble layer */}
+      <section className="relative overflow-hidden bg-[var(--color-splash-navy)] text-white">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1f3a] via-[var(--color-splash-navy)] to-[#0a1928]" />
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          {[
+            { left: '3%', size: 26, delay: 0, dur: 13 },
+            { left: '8%', size: 14, delay: 5, dur: 10 },
+            { left: '14%', size: 38, delay: 2, dur: 17 },
+            { left: '20%', size: 18, delay: 7.5, dur: 12 },
+            { left: '26%', size: 12, delay: 1, dur: 9 },
+            { left: '32%', size: 30, delay: 4.5, dur: 16 },
+            { left: '38%', size: 16, delay: 8, dur: 11 },
+            { left: '44%', size: 22, delay: 2.5, dur: 14 },
+            { left: '50%', size: 36, delay: 6, dur: 18 },
+            { left: '56%', size: 14, delay: 0.5, dur: 10 },
+            { left: '62%', size: 28, delay: 3.5, dur: 15 },
+            { left: '68%', size: 18, delay: 7, dur: 12 },
+            { left: '74%', size: 24, delay: 1.5, dur: 13 },
+            { left: '80%', size: 32, delay: 5.5, dur: 17 },
+            { left: '86%', size: 14, delay: 8.5, dur: 11 },
+            { left: '92%', size: 22, delay: 3, dur: 14 },
+            { left: '97%', size: 18, delay: 6.5, dur: 12 },
+          ].map((b, i) => (
+            <span
+              key={i}
+              className="bubble"
+              style={{
+                left: b.left,
+                width: b.size,
+                height: b.size,
+                animationDelay: `${b.delay}s`,
+                animationDuration: `${b.dur}s`,
+              }}
+            />
+          ))}
+        </div>
         <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-14 md:pt-32 md:pb-16">
           <div className="grid md:grid-cols-[1.5fr_1fr] gap-10 items-end">
             <div>
