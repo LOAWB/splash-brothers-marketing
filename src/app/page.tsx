@@ -58,17 +58,17 @@ const SUNDAY_EXPRESS = [
 ];
 
 const FULL_SERVICE = [
-  { name: 'Gold', price: 46.99, features: ['Full service car wash', 'Wheel cleaner', 'Polish', 'Windows', 'Interior vacuum', 'Interior + door jamb wipe down', 'Tire shine'] },
-  { name: 'Platinum', price: 56.99, popular: true, features: ['Everything in Gold', 'Rain-X polish', 'Dashboard dressing', 'Air freshener'] },
-  { name: 'Super Platinum', price: 89.99, features: ['Everything in Platinum', '100% Hand Wax', 'Exterior dressing'] },
+  { name: 'Gold', price: 46.99, midPrice: 48.99, fullPrice: 49.99, features: ['Full service car wash', 'Wheel cleaner', 'Polish', 'Windows', 'Interior vacuum', 'Interior + door jamb wipe down', 'Tire shine'] },
+  { name: 'Platinum', price: 56.99, midPrice: 58.99, fullPrice: 59.99, popular: true, features: ['Everything in Gold', 'Rain-X polish', 'Dashboard dressing', 'Air freshener'] },
+  { name: 'Super Platinum', price: 89.99, midPrice: 99.99, fullPrice: 109.99, features: ['Everything in Platinum', '100% Hand Wax', 'Exterior dressing'] },
 ];
 
 const DETAIL_PACKAGES = [
-  { name: 'Leather Treatment', price: 169.99, note: 'Platinum full service + clean and condition leather' },
-  { name: 'Clay Bar + Complete Hand Wax', price: 249.99, note: 'Full service + clay bar + 100% hand wax' },
-  { name: 'Interior Detail', price: 349.99, note: 'Full service + shampoo carpets, mats, seats + dash, console, panels' },
-  { name: 'Exterior Polish', price: 399.99, note: 'Full service + clay bar + 2-stage polish and wax' },
-  { name: '5-Step Exterior', price: 499.99, note: 'Full service + clay bar + diamond cut compound + wax + polish + paint seal' },
+  { name: 'Leather Treatment', price: 169.99, midPrice: 179.99, fullPrice: 189.99, note: 'Platinum full service + clean and condition leather' },
+  { name: 'Clay Bar + Complete Hand Wax', price: 249.99, midPrice: 259.99, fullPrice: 269.99, note: 'Full service + clay bar + 100% hand wax' },
+  { name: 'Interior Detail', price: 349.99, midPrice: 359.99, fullPrice: 369.99, note: 'Full service + shampoo carpets, mats, seats + dash, console, panels' },
+  { name: 'Exterior Polish', price: 399.99, midPrice: 419.99, fullPrice: 449.99, note: 'Full service + clay bar + 2-stage polish and wax' },
+  { name: '5-Step Exterior', price: 499.99, midPrice: 519.99, fullPrice: 549.99, note: 'Full service + clay bar + diamond cut compound + wax + polish + paint seal' },
 ];
 
 export default function HomePage() {
@@ -337,7 +337,11 @@ export default function HomePage() {
                   <span className="text-4xl font-black">${tier.price.toFixed(2).split('.')[0]}</span>
                   <span className="text-xl font-bold text-black/50">.{tier.price.toFixed(2).split('.')[1]}</span>
                 </div>
-                <p className="mt-0.5 text-xs text-[var(--color-splash-blue-deep)] font-semibold">Members save $20</p>
+                <div className="mt-0.5 text-[11px] text-black/55 leading-tight">
+                  <p>${tier.fullPrice.toFixed(2)} full-size vehicles</p>
+                  <p>${tier.midPrice.toFixed(2)} mid-size vehicles</p>
+                </div>
+                <p className="mt-1 text-xs text-[var(--color-splash-blue-deep)] font-semibold">Members save $20</p>
                 <ul className="mt-4 space-y-1.5 text-sm">
                   {tier.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-black/75"><span className="text-[var(--color-splash-blue)] flex-shrink-0">✓</span><span>{f}</span></li>
@@ -380,7 +384,13 @@ export default function HomePage() {
                   <h3 className="text-base md:text-lg font-bold tracking-tight">{pkg.name}</h3>
                   <p className="text-sm text-black/60">{pkg.note}</p>
                 </div>
-                <div className="text-2xl md:text-3xl font-black tabular-nums">${pkg.price.toFixed(2)}</div>
+                <div className="text-right">
+                  <div className="text-2xl md:text-3xl font-black tabular-nums">${pkg.price.toFixed(2)}</div>
+                  <div className="text-[11px] text-black/55 leading-tight">
+                    <p>${pkg.fullPrice.toFixed(2)} full-size</p>
+                    <p>${pkg.midPrice.toFixed(2)} mid-size</p>
+                  </div>
+                </div>
                 <div className="text-sm font-bold text-[var(--color-splash-blue)] group-hover:text-[var(--color-splash-blue-deep)]">Book →</div>
               </Link>
             ))}
