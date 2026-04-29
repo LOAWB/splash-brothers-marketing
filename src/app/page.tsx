@@ -59,8 +59,8 @@ const SUNDAY_EXPRESS = [
 
 const FULL_SERVICE = [
   { name: 'Gold', price: 46.99, midPrice: 48.99, fullPrice: 49.99, features: ['Full service car wash', 'Wheel cleaner', 'Polish', 'Windows', 'Interior vacuum', 'Interior + door jamb wipe down', 'Tire shine'] },
-  { name: 'Platinum', price: 56.99, midPrice: 58.99, fullPrice: 59.99, popular: true, features: ['Everything in Gold', 'Rain-X polish', 'Dashboard dressing', 'Air freshener'] },
-  { name: 'Super Platinum', price: 89.99, midPrice: 99.99, fullPrice: 109.99, features: ['Everything in Platinum', '100% Hand Wax', 'Exterior dressing'] },
+  { name: 'Platinum', price: 56.99, midPrice: 58.99, fullPrice: 59.99, popular: true, features: ['Everything in Gold', 'Rain-X polish', 'Dashboard dressing', 'Exterior dressing', 'Air freshener'] },
+  { name: 'Super Platinum', price: 89.99, midPrice: 99.99, fullPrice: 109.99, features: ['Everything in Platinum', '100% Hand Wax'] },
 ];
 
 const DETAIL_PACKAGES = [
